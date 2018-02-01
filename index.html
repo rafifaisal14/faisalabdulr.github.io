@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Menu Makan dan Minum</title>
+	<style type="text/css">
+		*{margin-top: 10px};
+		*{background-color: blue};
+		.mepet{
+			margin-left: 600px;
+		}
+
+	</style>
+
+</head>
+<body>
+
+	<h1>Menu Makan</h1><table>
+	<td>
+	<table style="width:500px;" border="3;">
+	
+		<tr>
+			<td align="center">Menu</td>
+			<td align="center">Harga</td>
+			<td align="center">Quantitas</td>
+		</tr>
+		
+		<tr>
+			<td align="center">Bakpao</td>
+			<td align="center">7.000</td>
+			<td align="center"><button onClick="bkpmin()">-</button>
+			<input type="text" id="bakpao" value="0"
+			align="center"><button onClick="bkpplus()">+</button></td>
+		</tr>
+
+		<tr>
+			<td align="center">Siomay</td>
+			<td align="center">5.000</td>
+			<td align="center"><button onClick="siomin()">-</button>
+			<input type="text" id="siomay" value="0"
+			align="center"><button onClick="sioplus()">+</button></td>
+		</tr>
+		
+		<tr>
+			<td align="center">Cimol</td>
+			<td align="center">2.000</td>
+			<td align="center"><button onClick="cimmin()">-</button>
+			<input type="text" id="cimol" value="0"
+			align="center"><button onClick="cimplus()">+</button></td>
+		</tr>
+		
+		<tr>
+			<td align="center">Cireng</td>
+			<td align="center">3.000</td>
+			<td align="center"><button onClick="cirmin()">-</button>
+			<input type="text" id="cireng" value="0"
+			align="center"><button onClick="cirplus()">+</button></td>
+		</tr>
+		
+		<tr>
+			<td colspan="2" align="center">Total</td>
+			<td align="center"><input id="Total" value="0"></input></td>
+		<tr>
+		
+			</table>
+	</td>
+	
+	<td>
+	<div id="inv1"></div>
+	<div id="bkp1"></div>
+	<div id="smy1"></div>
+	<div id="cml1"></div>
+	<div id="crg1"></div>
+	<div id="pay"></div>
+	</td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td>
+	<p></p>
+	<div id="inv2"></div>
+	<div id="bkp2"></div>
+	<div id="smy2"></div>
+	<div id="cml2"></div>
+	<div id="crg2"></div>
+	<div id="pay2"></div>
+	</td>
+	</table>
+	
+	<p></p>
+	<button onclick="invoice()">Submit</button><button onclick="refresh()">Refresh</button><button onclick="add()">Tambah</button>
+	<p>Click Refresh Untuk Mengulang Pesanan, Click Tambah Untuk Menambah Pesanan</p>
+	<p></p>
+	
+
+	<script type="text/javascript">
+var bakpao=0;
+
+	function bkpplus(){
+			bakpao += 1;
+            document.getElementById("bakpao").value = bakpao;
+			totalPrice();
+			
+	}
+	
+	function bkpmin(){ if (bakpao>0){
+			bakpao -= 1;
+            document.getElementById("bakpao").value = bakpao;
+			totalPrice();
+			
+	}}
+	
+var siomay=0;
+
+	function sioplus(){
+			siomay += 5;
+            document.getElementById("siomay").value = siomay;
+			totalPrice();
+			
+	}
+	
+	function siomin(){ if (siomay>0){
+			siomay -= 5;
+            document.getElementById("siomay").value = siomay;
+			totalPrice();
+			
+	}}
+
+var cimol=0;
+
+	function cimplus(){
+			cimol += 5;
+            document.getElementById("cimol").value = cimol;
+			totalPrice();
+			
+	}
+	
+	function cimmin(){ if (cimol>0){
+			cimol -= 5;
+            document.getElementById("cimol").value = cimol;
+			totalPrice();
+			
+	}}
+	
+var cireng=0;
+
+	function cirplus(){
+			cireng += 1;
+            document.getElementById("cireng").value = cireng;
+			totalPrice();
+			
+	}
+	
+	function cirmin(){ if (cireng>0){
+			cireng -= 1;
+            document.getElementById("cireng").value = cireng;
+			totalPrice();
+			
+	}}
+	
+	function totalPrice(){
+		pp = bakpao*7000 + siomay*5000 + cimol*2000 + cireng*3000;
+		document.getElementById("Total").value = "Rp " + pp;
+		}
+	
+	function invoice(){
+	document.getElementById("inv1").innerHTML ="INV001";
+	document.getElementById("bkp1").innerHTML ="Bakpao" + " (" + bakpao +")";
+	document.getElementById("smy1").innerHTML ="Siomay" + " (" + siomay +")";
+	document.getElementById("cml1").innerHTML ="Cimol" + " (" + cimol +")";
+	document.getElementById("crg1").innerHTML ="Cireng" + " (" + cireng +")";
+	document.getElementById("pay").innerHTML ="The Total is :" + " (" + pp +")";
+	}
+	
+	function refresh(){
+	document.getElementById("inv1").innerHTML =" ";
+	document.getElementById("bakpao").value = 0;
+	document.getElementById("siomay").value = 0;
+	document.getElementById("cimol").value = 0;
+	document.getElementById("cireng").value = 0;
+	document.getElementById("Total").value =0;
+	document.getElementById("bkp1").innerHTML =" " ;
+	document.getElementById("smy1").innerHTML =" " ;
+	document.getElementById("cml1").innerHTML =" ";
+	document.getElementById("crg1").innerHTML =" ";
+	document.getElementById("pay").innerHTML =" ";
+	}
+	
+	function add(){
+	document.getElementById("inv2").innerHTML ="INV002";
+	document.getElementById("bkp2").innerHTML ="Bakpao" + " (" + bakpao +")";
+	document.getElementById("smy2").innerHTML ="Siomay" + " (" + siomay +")";
+	document.getElementById("cml2").innerHTML ="Cimol" + " (" + cimol +")";
+	document.getElementById("crg2").innerHTML ="Cireng" + " (" + cireng +")";
+	document.getElementById("pay2").innerHTML ="The Total + Add is :" + " (" + pp +")";
+	}
+	
+</script>
+</body>
+</html>
